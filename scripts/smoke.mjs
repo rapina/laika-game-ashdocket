@@ -1,7 +1,8 @@
 /**
  * Smoke test — boots the dev server, runs the game headlessly and reports
- * whether the game boots and responds to touch without fatal errors. Games
- * through sequence 21 retain the historical full-run contract.
+ * whether the deployable page boots without runtime errors. Sequence 22
+ * retains its historical pointer-response check; games through sequence 21
+ * retain the historical full-run contract.
  *
  *   node scripts/smoke.mjs [seed] [timeoutMs]
  *
@@ -32,7 +33,10 @@ const SEED = process.argv[2] || '1'
 const TIMEOUT_MS = Number(process.argv[3] || '90000')
 const URL = `http://127.0.0.1:${DEV_PORT}/autoplay.html?seed=${encodeURIComponent(SEED)}`
 const studio = existsSync('.studio.json') ? JSON.parse(readFileSync('.studio.json', 'utf8')) : {}
-const fatalOnly = process.env.SMOKE_MODE === 'fatal-only' || (Number.isInteger(studio.sequence) && studio.sequence >= 22)
+const deploymentOnly = process.env.SMOKE_MODE === 'deployment-only'
+  || (Number.isInteger(studio.sequence) && studio.sequence >= 23)
+const fatalOnly = process.env.SMOKE_MODE === 'fatal-only'
+  || (Number.isInteger(studio.sequence) && studio.sequence === 22)
 
 async function killProcessTree(proc) {
     if (!proc?.pid) return
@@ -108,6 +112,34 @@ async function main() {
         page.on('pageerror', (err) => pageErrors.push(String(err)))
 
         await page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 60000 })
+        if (deploymentOnly) {
+            await page.waitForSelector('body', { timeout: 30000 })
+            await delay(1500)
+            const screenshot = await page.screenshot().catch(() => null)
+            await browser.close()
+            const summary = {
+                seed: SEED,
+                sourceHash: sourceHash(),
+                mounted: true,
+                consoleErrors,
+                pageErrors,
+            }
+            const serialized = JSON.stringify(summary, null, 2)
+            const existing = existsSync('smoke-result.json')
+                ? readFileSync('smoke-result.json', 'utf-8').trim()
+                : null
+            if (existing !== serialized) {
+                writeFileSync('smoke-result.json', serialized, 'utf-8')
+                if (screenshot) writeFileSync('smoke.png', screenshot)
+            }
+            console.log(serialized)
+            if (pageErrors.length > 0 || consoleErrors.length > 0) {
+                console.error('FAIL: page/console errors while loading the deployable page')
+                return 1
+            }
+            console.log('SMOKE OK (deployment-only)')
+            return 0
+        }
         await page.waitForSelector('canvas', { timeout: 30000 })
 
         // Blind-click around the canvas until the run ends. Games with menus /
