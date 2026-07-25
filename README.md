@@ -68,6 +68,6 @@ New public game repositories use the `laika-game-<slug>` naming scheme.
 ## 라이선스 / License
 
 - 코드 / Code: [MIT](LICENSE)
-- 문서와 비브랜드 원본 아트 / Documentation and original non-brand artwork:
-  [CC BY 4.0](CONTENT-LICENSE.md)
+- 문서 / Documentation: [CC BY 4.0](CONTENT-LICENSE.md)
+- 프로젝트 아트 / Project artwork: [CC0 1.0](CONTENT-LICENSE.md)
 - Galmuri fonts: SIL Open Font License 1.1
