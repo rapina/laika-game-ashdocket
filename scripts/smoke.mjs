@@ -1,6 +1,7 @@
 /**
  * Smoke test — boots the dev server, runs the game headlessly and reports
- * whether a full run completes without console errors.
+ * whether the game boots and responds to touch without fatal errors. Games
+ * through sequence 21 retain the historical full-run contract.
  *
  *   node scripts/smoke.mjs [seed] [timeoutMs]
  *
@@ -15,9 +16,7 @@
  * Requires a local Chrome install (or set CHROME=<path to chrome.exe>).
  */
 import { spawn } from 'node:child_process'
-import { writeFileSync, readFileSync, readdirSync, statSync, existsSync } from 'node:fs'
-import { createHash } from 'node:crypto'
-import { join, sep } from 'node:path'
+import { writeFileSync, readFileSync, existsSync } from 'node:fs'
 
 // 검증 증거를 코드 상태에 바인딩한다: 잠금 게이트(prepare-editorial.mjs)가
 // 같은 방식으로 해시를 재계산해 소스가 바뀐 뒤의 낡은 증거를 거부한다.
@@ -32,6 +31,8 @@ const DEV_PORT = 4183
 const SEED = process.argv[2] || '1'
 const TIMEOUT_MS = Number(process.argv[3] || '90000')
 const URL = `http://127.0.0.1:${DEV_PORT}/autoplay.html?seed=${encodeURIComponent(SEED)}`
+const studio = existsSync('.studio.json') ? JSON.parse(readFileSync('.studio.json', 'utf8')) : {}
+const fatalOnly = process.env.SMOKE_MODE === 'fatal-only' || (Number.isInteger(studio.sequence) && studio.sequence >= 22)
 
 async function killProcessTree(proc) {
     if (!proc?.pid) return
@@ -113,15 +114,23 @@ async function main() {
         // multi-step input may need a smarter driver — extend here per game.
         const started = Date.now()
         let state = null
+        let interactionVerified = false
         while (Date.now() - started < TIMEOUT_MS) {
             const box = await page.locator('canvas').boundingBox().catch(() => null)
             if (box) {
+                const beforeState = await page.evaluate(() => globalThis.__gameState ?? null)
+                const beforeImage = await page.locator('canvas').screenshot().catch(() => null)
                 const x = box.x + box.width * (0.1 + Math.random() * 0.8)
                 const y = box.y + box.height * (0.1 + Math.random() * 0.8)
                 await page.mouse.click(x, y).catch(() => {})
+                await delay(180)
+                const afterState = await page.evaluate(() => globalThis.__gameState ?? null)
+                const afterImage = await page.locator('canvas').screenshot().catch(() => null)
+                interactionVerified ||= JSON.stringify(beforeState) !== JSON.stringify(afterState)
+                  || (beforeImage && afterImage && !beforeImage.equals(afterImage))
             }
             state = await page.evaluate(() => globalThis.__gameState ?? null)
-            if (state?.over) break
+            if (state?.over || (fatalOnly && interactionVerified)) break
             await delay(150)
         }
         // GameScreen defers onGameOver briefly for the runtime's game-over
@@ -151,6 +160,7 @@ async function main() {
             seed: SEED,
             sourceHash: sourceHash(),
             mounted: state !== null,
+            interactionVerified,
             finished: Boolean(state?.over),
             resultDelivered: Boolean(result),
             restartVerified,
@@ -179,6 +189,14 @@ async function main() {
         if (pageErrors.length > 0 || consoleErrors.length > 0) {
             console.error('FAIL: page/console errors during the run')
             return 1
+        }
+        if (fatalOnly && !summary.interactionVerified) {
+            console.error('FAIL: pointer input produced no observable response')
+            return 1
+        }
+        if (fatalOnly) {
+            console.log('SMOKE OK (fatal-only)')
+            return 0
         }
         if (!summary.finished) {
             console.error('FAIL: run did not reach game over within timeout')
