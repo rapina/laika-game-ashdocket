@@ -9,7 +9,7 @@ PixiJS, Vite, Capacitor와 Apps in Toss 빌드 경로를 포함하며, 게임 �
 ### 빠른 시작
 
 ```bash
-git clone https://github.com/rapina/toss-game-launchpad.git my-game
+git clone https://github.com/rapina/laika-game-lunchpad.git my-game
 cd my-game
 npm ci
 npm run new-game -- --id com.example.mygame --name "MY GAME" --slug mygame --display "내 게임"
@@ -41,7 +41,7 @@ Toss build path. Game rules stay isolated behind the `GameRuntime` contract.
 ### Quick start
 
 ```bash
-git clone https://github.com/rapina/toss-game-launchpad.git my-game
+git clone https://github.com/rapina/laika-game-lunchpad.git my-game
 cd my-game
 npm ci
 npm run new-game -- --id com.example.mygame --name "MY GAME" --slug mygame --display "My Game"
