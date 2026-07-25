@@ -96,8 +96,21 @@ export function stats(values) {
 //   }
 export const IDLE_FATAL_FRACTION = 1 / 3
 
-export function evaluateGates({ intuitive, skilled, noInput }) {
+export function evaluateGates({ profile = 'challenge', intuitive, skilled, noInput, evidence = {} }) {
     const failed = []
+    if (profile !== 'challenge') {
+        if (!(evidence.meaningfulActions >= 3)) failed.push('tooFewMeaningfulActions')
+        if (!(evidence.distinctOutcomes >= 2)) failed.push('outcomesDoNotDiffer')
+        if (!(evidence.resetWorks === true)) failed.push('resetDoesNotWork')
+        if (['puzzle', 'strategy', 'construction'].includes(profile)) {
+            if (!(evidence.reachableGoal === true)) failed.push('goalNotReachable')
+            if (!(evidence.choiceChangesState === true)) failed.push('choiceDoesNotChangeState')
+        }
+        if (['exploration', 'toy'].includes(profile)) {
+            if (!(evidence.discoverableReactions >= 3)) failed.push('tooFewDiscoverableReactions')
+        }
+        return { pass: failed.length === 0, failedGates: failed }
+    }
     // 직관: 핵심 판정을 여러 번 겪고, 성공/실패로 끝난다(시간초과 종료 아님).
     if (!(intuitive.meanJudgments >= 3)) failed.push('intuitiveExperiencesJudgments')
     if (!(intuitive.endedByJudgementRate >= 0.9)) failed.push('intuitiveEndsByJudgement')
@@ -139,7 +152,12 @@ export function writeResult(gameRoot, body) {
 //   import { createState, renderModel, step, STEP_MS } from '../src/game/<slug>/rules.mjs'
 //   ... 정책 손(perceive + 반응지연)으로 step()을 틱마다 호출 ...
 //   const summary = { intuitive, skilled, noInput }   // 위 요구 필드
-//   const gate = evaluateGates(summary)
+//   const gate = evaluateGates({ profile: 'challenge', ...summary })
+// 다른 구조는 profile과 evidence를 전달한다. 예:
+//   evaluateGates({
+//     profile: 'toy',
+//     evidence: { meaningfulActions: 8, distinctOutcomes: 5, resetWorks: true, discoverableReactions: 5 },
+//   })
 //   const { sourceHash } = writeResult(gameRoot, { pass: gate.pass, failedGates: gate.failedGates, ...summary })
 //   if (!gate.pass) process.exit(1)
 //
