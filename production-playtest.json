@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "initialBuildHash": "2d64569556dd9ed7827dc4864c8bdb6582d0090d15c3bad40cb954acd82788a4",
+  "finalBuildHash": "ad7849964a78e29159871353d408d27e63633f3f65486b8f96e7b4fdd0044f2c",
+  "sessions": [
+    {
+      "playerContext": "build-only",
+      "observation": {
+        "understood": "A card-based deckbuilding trial: select a card, then select the enemy or counsel target, spend Focus, end the turn, choose a reward card, and continue to the next hearing.",
+        "attempted": "About five minutes at 390x844: Open Case; chose Whispering Jury; played Record Submission and Press on the enemy; played Hold Ground and Objection on counsel; ended turns; selected Precedent from the reward; chose Seal Clerk; played for five turns; also tapped a two-Focus card without enough remaining Focus.",
+        "reached": "Hearing 2/8 against Seal Clerk. The Clerk had 12/31 argument, Ward 6, while counsel had Trust 48 and Evidence 3. The first hearing was won in two turns with Trust 48.",
+        "friction": "Remaining Focus used small diamonds and was not quickly readable before the insufficient-Focus message. Objection did not visibly change the still-displayed Attack 6 intent, so its timing was unclear. Evidence cost +1 was visible against the Clerk, but when and why Ward returned to 6 was unclear."
+      }
+    }
+  ],
+  "makerResponse": {
+    "changes": [
+      {
+        "observation": "Remaining Focus was not quickly readable, and an unaffordable two-cost card was attempted.",
+        "change": "Replaced the small Focus diamonds with a large current/base numeric readout such as 2 / 3. Cards that cannot be paid with current Focus are now visibly dimmed and labeled NEED FOCUS or 집중 부족 before the player taps them."
+      },
+      {
+        "observation": "Objection's damage reduction did not visibly alter the enemy intent.",
+        "change": "Added a shared rules preview for incoming intent and changed the live intent panel immediately from the original value to the effective value, such as Attack 6 → 3. A short Objection feedback message repeats the reduction, and tests bind the displayed preview to the damage actually resolved."
+      },
+      {
+        "observation": "The Seal Clerk's returning Ward 6 lacked a clear cause.",
+        "change": "Changed ward intent to an explicit positive delta, Ward +6 or 보호막 +6, while current Ward remains on the enemy portrait. The Clerk rule now states that attacks alternate with Ward +6, making the source and timing visible before turn resolution."
+      }
+    ],
+    "releaseCandidateReason": "The build-only player independently understood and executed the complete card-target-turn-reward loop, won a hearing, drafted a build card, and adapted to the next opponent. The rebuild resolves every observed information ambiguity without changing the learned controls or deckbuilding structure: spendability is legible before input, Objection now changes the live forecast, and Ward gain is forecast as a positive action. The game-specific suite verifies those forecasts against resolution, the planned run still closes at the final verdict, and the rebuilt production, Arcade, smoke, viewport, and CSP checks pass at the final source hash."
+  }
+}

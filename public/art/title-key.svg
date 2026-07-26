@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 1688" role="img" aria-labelledby="title desc">
+  <title id="title">Ash Docket courtroom</title>
+  <desc id="desc">A paper theatre courtroom with a copper moon, a red seal, and drifting ash.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#18111f"/>
+      <stop offset="0.55" stop-color="#2c1c2b"/>
+      <stop offset="1" stop-color="#100d15"/>
+    </linearGradient>
+    <radialGradient id="moon">
+      <stop offset="0" stop-color="#b6d2c8"/>
+      <stop offset="0.65" stop-color="#5fa49b"/>
+      <stop offset="1" stop-color="#315f63"/>
+    </radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <rect width="780" height="1688" fill="url(#night)"/>
+  <circle cx="390" cy="390" r="205" fill="#5fa49b" opacity=".18" filter="url(#glow)"/>
+  <circle cx="390" cy="390" r="160" fill="url(#moon)"/>
+  <path d="M130 700V350Q130 170 300 95H480Q650 170 650 350V700H590V365Q590 220 465 165H315Q190 220 190 365V700Z" fill="#0b0910" opacity=".92"/>
+  <path d="M95 755H685L735 1540H45Z" fill="#201622" stroke="#6f4a45" stroke-width="8"/>
+  <path d="M185 810H595L625 1415H155Z" fill="#e7d8b1" opacity=".9"/>
+  <path d="M215 870H565M210 955H570M205 1040H575M200 1125H580M195 1210H585" stroke="#604c4d" stroke-width="12" opacity=".45"/>
+  <circle cx="390" cy="1320" r="105" fill="#e56b4f"/>
+  <circle cx="390" cy="1320" r="72" fill="none" stroke="#f1ba83" stroke-width="7"/>
+  <path d="M350 1320L382 1352L438 1288" fill="none" stroke="#2a1720" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#e7d8b1" opacity=".65">
+    <circle cx="90" cy="280" r="5"/><circle cx="690" cy="240" r="7"/><circle cx="610" cy="570" r="4"/>
+    <circle cx="115" cy="1040" r="6"/><circle cx="695" cy="980" r="4"/><circle cx="650" cy="1280" r="8"/>
+    <circle cx="85" cy="1430" r="4"/><circle cx="705" cy="1490" r="5"/><circle cx="315" cy="620" r="4"/>
+  </g>
+</svg>

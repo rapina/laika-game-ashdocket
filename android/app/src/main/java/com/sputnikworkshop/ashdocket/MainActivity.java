@@ -1,4 +1,4 @@
-package com.example.gametemplate;
+package com.sputnikworkshop.ashdocket;
 
 import com.getcapacitor.BridgeActivity;
 

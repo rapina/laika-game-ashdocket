@@ -1,37 +1,37 @@
 {
   "schemaVersion": 1,
-  "slug": "gametemplate",
-  "appId": "com.example.gametemplate",
+  "slug": "ashdocket",
+  "appId": "com.sputnikworkshop.ashdocket",
   "version": "0.0.1",
-  "releaseDate": "TODO-YYYY-MM-DD",
+  "releaseDate": "2026-07-26",
   "title": {
-    "ko": "게임 템플릿",
-    "en": "Game Template"
+    "ko": "재의 사건부",
+    "en": "Ash Docket"
   },
   "tagline": {
-    "ko": "TODO 한 줄 소개",
-    "en": "TODO one line pitch"
+    "ko": "망자의 마지막 변론을 덱으로 엮어라",
+    "en": "Build a case before memory turns to ash"
   },
   "description": {
-    "ko": "TODO 규칙과 목표, 실패 조건을 중립 문체로 적는다.",
-    "en": "TODO describe the rules, the goal, and the failure condition in neutral prose."
+    "ko": "손패 5장과 집중력 3으로 상대의 공개된 의도에 대응한다. 여덟 심리에서 카드를 모으고 강화한 뒤 채택 규칙이 바뀌는 대법관을 설득한다. 신뢰가 0이면 사건에서 패소한다.",
+    "en": "Spend three Focus across a five-card hand to answer visible enemy intents. Draft and upgrade cards through eight hearings, then face a High Judge whose admissible argument changes each round. The case is lost when Trust reaches zero."
   },
   "controls": {
     "ko": {
-      "primary": "TODO 주 입력이 무엇을 하는지",
-      "keyboard": "TODO 키보드 대체 입력",
-      "restart": "결과 화면을 눌러 다시 시작한다."
+      "primary": "카드를 탭한 뒤 빛나는 상대 또는 변호인 인장을 탭해 사용한다.",
+      "keyboard": "숫자 1–5로 카드를 고르고 Enter로 대상 확정 또는 턴 종료를 한다.",
+      "restart": "결과 화면의 새 사건 버튼을 눌러 다시 시작한다."
     },
     "en": {
-      "primary": "TODO what the primary input does",
-      "keyboard": "TODO keyboard alternative",
-      "restart": "Tap the result screen to start again."
+      "primary": "Tap a card, then tap the glowing opponent or counsel seal to play it.",
+      "keyboard": "Use 1–5 to select a card and Enter to confirm its target or end the turn.",
+      "restart": "Tap New Case on the result screen to start again."
     }
   },
   "session": {
-    "typicalSeconds": 90,
-    "maxSeconds": 180,
-    "failureBudget": 3
+    "typicalSeconds": 1200,
+    "maxSeconds": 2400,
+    "failureBudget": 1
   },
   "display": {
     "designWidth": 390,
@@ -41,14 +41,14 @@
   },
   "supportedLocales": ["ko", "en"],
   "media": {
-    "titleKeyImage": "public/art/title-key.jpg",
-    "visualMedium": "TODO 시각 매체",
+    "titleKeyImage": "public/art/title-key.svg",
+    "visualMedium": "PixiJS geometric paper-theatre courtroom with an original SVG key image",
     "audio": "synthesized WebAudio only, no audio files",
     "screenshots": []
   },
   "arcade": {
     "entry": "entry.mjs",
-    "capabilities": ["pointer", "keyboard"],
+    "capabilities": ["pointer", "keyboard", "audio"],
     "viewport": {
       "width": 390,
       "height": 844,
@@ -57,10 +57,11 @@
     "assets": [
       { "source": "public/fonts/Galmuri11.woff2", "releasePath": "fonts/Galmuri11.woff2" },
       { "source": "public/fonts/Galmuri11-Bold.woff2", "releasePath": "fonts/Galmuri11-Bold.woff2" },
-      { "source": "public/fonts/Galmuri14.woff2", "releasePath": "fonts/Galmuri14.woff2" }
+      { "source": "public/fonts/Galmuri14.woff2", "releasePath": "fonts/Galmuri14.woff2" },
+      { "source": "public/art/title-key.svg", "releasePath": "art/title-key.svg" }
     ]
   },
   "source": {
-    "launchpadCommit": "TODO-launchpad-sha"
+    "launchpadCommit": "template-2026-07-26"
   }
 }

@@ -16,8 +16,11 @@ export default function TitleScreen({ onPlay, onRanking }: Props) {
 
     return (
         <div className="screen title-screen">
+            <div className="title-ash" aria-hidden="true" />
+            <img className="title-key-art" src="/art/title-key.svg" alt="" />
             <div className="title-logo">
                 <h1>{t('title.name')}</h1>
+                <p className="title-english">{t('title.english')}</p>
                 <p className="title-tagline">{t('title.tagline')}</p>
             </div>
             <div className="title-menu">
@@ -27,8 +30,8 @@ export default function TitleScreen({ onPlay, onRanking }: Props) {
                 <button className="btn title-btn" onClick={onRanking}>
                     {t('title.ranking')}
                 </button>
-                <button className="btn btn-small" onClick={cycleLocale}>
-                    {getLocale().toUpperCase()}
+                <button className="btn btn-small language-btn" onClick={cycleLocale}>
+                    {t('title.language')}
                 </button>
             </div>
             <div className="title-version">v{__APP_VERSION__}</div>

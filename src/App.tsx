@@ -7,7 +7,6 @@ import GameScreen from './components/GameScreen'
 import RankingScreen from './screens/RankingScreen'
 import AdBanner from './components/AdBanner'
 import Modal from './components/Modal'
-import { useBGM } from './hooks/useBGM'
 import { bgm } from './audio/BGMManager'
 import { getPlatformAdapter, type PlatformAdapter } from './platform'
 import { getAdAdapter, type AdAdapter } from './ads'
@@ -25,8 +24,6 @@ export default function App() {
     const [, setIapAdapter] = useState<IapAdapter | null>(null)
     const [lastResult, setLastResult] = useState<GameResult | null>(null)
     const [modal, setModal] = useState<{ title?: string; message: string } | null>(null)
-    useBGM(screen)
-
     // Initialize platform + ad + IAP adapters
     useEffect(() => {
         getPlatformAdapter().then(setPlatform)

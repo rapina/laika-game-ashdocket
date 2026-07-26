@@ -47,8 +47,8 @@ export default function GameScreen({ onGameOver, onExit }: Props) {
     return (
         <div className="screen game-screen">
             <div ref={hostRef} className="game-host" />
-            <button className="btn game-exit-btn" onClick={onExit}>
-                {t('game.exit')}
+            <button className="btn game-exit-btn" onClick={onExit} aria-label={t('game.exit')} title={t('game.exit')}>
+                ×
             </button>
         </div>
     )

@@ -4,7 +4,9 @@
  */
 
 let ctx: AudioContext | null = null
+let muted = false
 function getCtx(): AudioContext | null {
+    if (muted) return null
     if (ctx) return ctx
     try {
         const AC = (window.AudioContext || (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext) as typeof AudioContext
@@ -17,6 +19,11 @@ function getCtx(): AudioContext | null {
 export function unlockAudio() {
     const c = getCtx()
     if (c && c.state === 'suspended') void c.resume()
+}
+
+export function setSfxMuted(value: boolean): void {
+    muted = value
+    if (ctx) void (value ? ctx.suspend() : ctx.resume())
 }
 
 function blip(freq: number, duration = 0.08, type: OscillatorType = 'sine', volume = 0.15, attack = 0.005): void {

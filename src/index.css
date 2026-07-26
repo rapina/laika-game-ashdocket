@@ -29,17 +29,17 @@
 
 /* ======= Theme Tokens — restyle per game ======= */
 :root {
-    --bg: #0c1824;
-    --bg-deep: #060e18;
-    --panel: #121e2e;
-    --panel-light: #1a2a3c;
-    --border-line: #1e3048;
-    --accent: #d4a830;
-    --accent-dim: rgba(212, 168, 48, 0.15);
-    --danger: #ff4438;
-    --text: #d0d8e0;
-    --text-dim: #7a8a9a;
-    --radius: 6px;
+    --bg: #18111f;
+    --bg-deep: #0b0910;
+    --panel: #2b1c2a;
+    --panel-light: #3b2735;
+    --border-line: #664557;
+    --accent: #e56b4f;
+    --accent-dim: rgba(229, 107, 79, 0.16);
+    --danger: #d94f56;
+    --text: #e7d8b1;
+    --text-dim: #a89488;
+    --radius: 9px;
 }
 
 html, body, #root {
@@ -150,20 +150,62 @@ html, body, #root {
 
 .title-screen {
     justify-content: center;
-    gap: 48px;
+    gap: 26px;
+    isolation: isolate;
+    background:
+        radial-gradient(circle at 50% 27%, rgba(95, 164, 155, 0.24), transparent 30%),
+        linear-gradient(#18111f, #2c1c2b 58%, #100d15);
+}
+.title-key-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.38;
+    z-index: -2;
+}
+.title-ash {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.5;
+    background-image:
+        radial-gradient(circle at 18% 23%, #e7d8b1 0 1px, transparent 2px),
+        radial-gradient(circle at 74% 31%, #e7d8b1 0 1px, transparent 2px),
+        radial-gradient(circle at 62% 72%, #e7d8b1 0 1.5px, transparent 2px),
+        radial-gradient(circle at 25% 81%, #e7d8b1 0 1px, transparent 2px);
+    background-size: 97px 131px, 131px 157px, 173px 113px, 149px 181px;
+    animation: ash-fall 14s linear infinite;
+}
+@keyframes ash-fall {
+    to { transform: translateY(-60px); }
 }
 .title-logo {
     text-align: center;
+    width: min(330px, 86vw);
+    padding: 18px 12px 20px;
+    background: rgba(17, 12, 20, 0.76);
+    border-top: 1px solid rgba(231, 216, 177, 0.24);
+    border-bottom: 1px solid rgba(231, 216, 177, 0.24);
+    backdrop-filter: blur(4px);
 }
 .title-logo h1 {
     font-family: 'Galmuri14', monospace;
-    font-size: 34px;
-    letter-spacing: 2px;
-    color: var(--accent);
+    font-size: clamp(29px, 8vw, 36px);
+    letter-spacing: 3px;
+    color: var(--text);
+    text-shadow: 0 3px 18px rgba(229, 107, 79, 0.55);
+}
+.title-english {
+    margin-top: 7px;
+    color: #5fa49b;
+    letter-spacing: 5px;
+    font-size: 11px;
 }
 .title-tagline {
-    margin-top: 10px;
-    font-size: 13px;
+    margin-top: 17px;
+    font-size: 12px;
     color: var(--text-dim);
 }
 .title-menu {
@@ -173,7 +215,16 @@ html, body, #root {
     gap: 14px;
 }
 .title-btn {
-    width: 220px;
+    width: 238px;
+    background: rgba(43, 28, 42, 0.94);
+    backdrop-filter: blur(4px);
+}
+.title-btn.btn-primary {
+    background: var(--accent);
+}
+.language-btn {
+    min-width: 92px;
+    background: rgba(17, 12, 20, 0.9);
 }
 .title-version {
     position: absolute;
@@ -202,9 +253,13 @@ html, body, #root {
     position: absolute;
     top: calc(env(safe-area-inset-top, 0px) + 10px);
     right: 10px;
-    font-size: 11px;
-    padding: 6px 12px;
-    opacity: 0.75;
+    width: 44px;
+    height: 38px;
+    font-size: 22px;
+    line-height: 20px;
+    padding: 4px;
+    opacity: 0.88;
+    z-index: 10;
 }
 
 /* ======= Ranking ======= */
