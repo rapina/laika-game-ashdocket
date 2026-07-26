@@ -186,6 +186,46 @@
     각각 505,116 / 167,372 / 565,420 / 2,020 bytes.
 - 잠금, 커밋, 푸시와 편집 준비는 수행하지 않았다.
 
+## 비SVG 플레이 매체 재제작
+
+- 이전 후보 source hash:
+  `ad7849964a78e29159871353d408d27e63633f3f65486b8f96e7b4fdd0044f2c`.
+- 중립 제작 계약의 주 시각 매체 기준에 맞춰 8명의 상대를 그린 래스터
+  과슈·목탄 4×2 아틀라스를 만들었다. 사건표의 상대 선택 카드와 매 심리의 활성
+  상대 패널에 같은 회화 셀을 사용하고, 벡터·절차 도형은 HUD와 종이극장 프레임을
+  보조한다.
+- 생성 원본과 배포본, 프롬프트, 해시, 축소 과정, 셀 대응과 실제 사용 위치는
+  `art/gameplay/` 및 `ART.md`에 기록했다.
+- `src/game/gameplayArt.test.ts`가 배포 PNG의 시그니처·바이트·SHA-256,
+  manifest 패키징, 사건표와 심리 양쪽의 런타임 사용을 검사한다.
+- 최종 source hash와 전체 검증 결과는 아래 후속 기록에 확정한다.
+
+## 비SVG 플레이 매체 검증
+
+- 최종 source hash:
+  `e6d04e3d9b84d637ffe957c8cd74bef971ddc0211c4f5cadbb50cade96ba9edb`.
+  `production-playtest.json`, smoke, viewport가 같은 값을 기록한다. 이전 빌드 전용
+  플레이어 관찰은 그대로 보존했다.
+- `npm test -- --reporter=verbose`: 5 files, 29 tests 통과. 새 아트 검사는 배포
+  PNG의 2,191,914 bytes와 SHA-256, manifest 패키징, 사건표·심리 양쪽 사용을
+  확인했다.
+- `npm run build`: 통과. Vite의 500KB 초과 청크와 Capacitor 동적/정적 import
+  경고는 기존과 같으며 새 PNG 로딩 오류는 없었다.
+- `npm run build:arcade`: 19 immutable files, 5,414,862 bytes,
+  311,485 JS gzip bytes. 릴리스 검증 통과.
+- `npm run smoke`: deployment-only mount, console/page error 0, 통과.
+- `npm run viewport`: 360×800, 390×844, 430×932, 900×760의 standalone·portal,
+  한·영 종료 화면이 모두 통과했다.
+- `npm run csp`: 최초 하네스가 공개 자산 기준 URL을 `/`로 넘겨 새 PNG를 404로
+  찾았다. `assetBaseUrl`을 하네스의 실제 릴리스 경로 `/__game-assets/`로
+  바로잡은 뒤 stylesheet, canvas, missing assets, CSP 위반 검사가 모두 통과했다.
+- 프로덕션 preview HTTP: Galmuri 글꼴 3개, `art/title-key.svg`,
+  `art/opponent-atlas.png`가 모두 200을 반환했다. HTTP로 받은 아틀라스 해시는
+  `34c5a39c5dc4f1c338384bae763a1d488bb2c05d3d741db2e7bb2ceb83a584f8`.
+- 390×844 실화면을 `verification/raster-docket-390x844.png`와
+  `verification/raster-hearing-390x844.png`로 확인했다. 사건표 카드와 심리
+  상대 패널 모두에서 초상, 목탄 윤곽, 과슈 질감이 정상 플레이 중 식별된다.
+
 ## 제작 잠금 뒤 공개 준비
 
 - 재잠금 기준 커밋: `5f2d485dd2bb19daa786e17bf8694df514880a01`.

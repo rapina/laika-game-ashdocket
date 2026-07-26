@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "initialBuildHash": "2d64569556dd9ed7827dc4864c8bdb6582d0090d15c3bad40cb954acd82788a4",
-  "finalBuildHash": "ad7849964a78e29159871353d408d27e63633f3f65486b8f96e7b4fdd0044f2c",
+  "finalBuildHash": "e6d04e3d9b84d637ffe957c8cd74bef971ddc0211c4f5cadbb50cade96ba9edb",
   "sessions": [
     {
       "playerContext": "build-only",
@@ -26,8 +26,12 @@
       {
         "observation": "The Seal Clerk's returning Ward 6 lacked a clear cause.",
         "change": "Changed ward intent to an explicit positive delta, Ward +6 or 보호막 +6, while current Ward remains on the enemy portrait. The Clerk rule now states that attacks alternate with Ward +6, making the source and timing visible before turn resolution."
+      },
+      {
+        "observation": "The locked build used vector and procedural forms for the entire playable body, so it did not satisfy the updated neutral production requirement for an identity-defining non-SVG primary visual medium during normal play.",
+        "change": "Generated an eight-opponent raster gouache-and-charcoal atlas and placed its distinct paintings in every encounter choice and active hearing panel. PixiJS shapes now support the courtroom frame and HUD while the painted opponents carry the gameplay identity."
       }
     ],
-    "releaseCandidateReason": "The build-only player independently understood and executed the complete card-target-turn-reward loop, won a hearing, drafted a build card, and adapted to the next opponent. The rebuild resolves every observed information ambiguity without changing the learned controls or deckbuilding structure: spendability is legible before input, Objection now changes the live forecast, and Ward gain is forecast as a positive action. The game-specific suite verifies those forecasts against resolution, the planned run still closes at the final verdict, and the rebuilt production, Arcade, smoke, viewport, and CSP checks pass at the final source hash."
+    "releaseCandidateReason": "The build-only player independently understood and executed the complete card-target-turn-reward loop, won a hearing, drafted a build card, and adapted to the next opponent. The rebuild resolves every observed information ambiguity without changing the learned controls or deckbuilding structure: spendability is legible before input, Objection now changes the live forecast, and Ward gain is forecast as a positive action. Eight raster gouache-and-charcoal opponents now define both encounter selection and every hearing without changing the observed rules. The game-specific suite verifies the rules forecasts and exact packaged atlas against runtime use, the planned run still closes at the final verdict, and the rebuilt production, Arcade, smoke, viewport, and CSP checks pass at the final source hash."
   }
 }

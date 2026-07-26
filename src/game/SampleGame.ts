@@ -1,4 +1,4 @@
-import { Application, Container, Graphics, Rectangle, Text } from 'pixi.js'
+import { Application, Assets, Container, Graphics, Rectangle, Sprite, Text, Texture } from 'pixi.js'
 import { APP_CONFIG } from '../appConfig'
 import { getLocale } from '../i18n'
 import { haptic, setSfxMuted, sfxCard, sfxChip, sfxDefeat, sfxHit, sfxLose, sfxWin, unlockAudio } from '../audio/SFXSynth'
@@ -50,6 +50,17 @@ const ENCOUNTER_PAIRS: Array<[EnemyId, EnemyId]> = [
     ['choir', 'clerk'],
     ['bailiff', 'prosecutor'],
 ]
+
+const ENEMY_PORTRAIT_INDEX: Record<EnemyId, number> = {
+    jury: 0,
+    clerk: 1,
+    witness: 2,
+    prosecutor: 3,
+    bailiff: 4,
+    archivist: 5,
+    choir: 6,
+    judge: 7,
+}
 
 const UI = {
     ko: {
@@ -180,6 +191,13 @@ export class SampleGame implements GameRuntime {
     private familyUsage: Partial<Record<CardFamily, number>> = {}
     private currentEnemy: EnemyId | null = null
     private keyHandler = (event: KeyboardEvent) => this.onKey(event)
+    private opponentAtlas: Texture | null = null
+    private readonly opponentAtlasUrl: string
+
+    constructor(assetBaseUrl = '') {
+        const base = assetBaseUrl ? `${assetBaseUrl.replace(/\/+$/, '')}/` : '/'
+        this.opponentAtlasUrl = `${base}art/opponent-atlas.png`
+    }
 
     async mount(container: HTMLElement, callbacks: GameCallbacks): Promise<void> {
         this.callbacks = callbacks
@@ -201,6 +219,7 @@ export class SampleGame implements GameRuntime {
             return
         }
         this.app = app
+        this.opponentAtlas = await Assets.load<Texture>(this.opponentAtlasUrl)
         container.appendChild(app.canvas)
         const fit = () => {
             const scale = Math.min(container.clientWidth / W, container.clientHeight / H)
@@ -383,11 +402,7 @@ export class SampleGame implements GameRuntime {
     private enemyChoice(enemy: EnemyId, x: number, y: number, w: number, h: number): void {
         const c = this.panel(x, y, w, h, PANEL, enemy === 'bailiff' || enemy === 'prosecutor' ? DANGER : COPPER)
         const [name, rule] = ENEMY_COPY[this.locale][enemy]
-        const portrait = new Graphics()
-        portrait.circle(59, 65, 34).fill({ color: 0x110d15, alpha: 0.9 })
-        portrait.moveTo(22, 136).quadraticCurveTo(59, 88, 96, 136).lineTo(96, 156).lineTo(22, 156).fill(0x110d15)
-        portrait.circle(48, 61, 3).fill(EMBER).circle(70, 61, 3).fill(EMBER)
-        c.addChild(portrait)
+        c.addChild(this.opponentPortrait(enemy, 12, 13, 94, 168))
         c.addChild(this.text(name, 120, 24, 18, PAPER, { weight: 'bold', width: 208 }))
         c.addChild(this.text(this.tr('warning'), 120, 66, 10, GOLD))
         c.addChild(this.text(rule, 120, 90, 12, PAPER_DARK, { width: 208 }))
@@ -413,11 +428,7 @@ export class SampleGame implements GameRuntime {
         const enemy = this.panel(18, 68, 354, 222, 0x241822, this.selectedTarget() === 'enemy' ? EMBER : 0x704654)
         const [name, rule] = ENEMY_COPY[this.locale][b.enemyId]
         enemy.addChild(this.text(name, 177, 17, 17, PAPER, { anchor: 0.5, weight: 'bold', width: 320, align: 'center' }))
-        const portrait = new Graphics()
-        portrait.circle(177, 90, 50).fill({ color: 0x100c13, alpha: 0.96 }).stroke({ color: COPPER, width: 2, alpha: 0.5 })
-        portrait.moveTo(117, 174).quadraticCurveTo(177, 111, 237, 174).lineTo(237, 190).lineTo(117, 190).fill(0x100c13)
-        portrait.circle(160, 89, 4).fill(EMBER).circle(194, 89, 4).fill(EMBER)
-        enemy.addChild(portrait)
+        enemy.addChild(this.opponentPortrait(b.enemyId, 108, 43, 138, 116))
         enemy.addChild(this.text(`${b.enemyHp}/${b.enemyMaxHp}`, 177, 143, 15, PAPER, { anchor: 0.5, weight: 'bold' }))
         if (b.enemyBlock > 0) enemy.addChild(this.text(`${this.tr('ward')} ${b.enemyBlock}`, 177, 169, 11, COPPER, { anchor: 0.5 }))
         enemy.addChild(this.text(rule, 177, 202, 10, PAPER_DARK, { anchor: 0.5, width: 320, align: 'center' }))
@@ -462,6 +473,29 @@ export class SampleGame implements GameRuntime {
         }
         this.renderHand(b)
         this.button(this.tr('endTurn'), 18, 774, 354, 50, () => this.finishTurn(), COPPER)
+    }
+
+    private opponentPortrait(enemy: EnemyId, x: number, y: number, w: number, h: number): Container {
+        if (!this.opponentAtlas) throw new Error('opponent portrait atlas not loaded')
+        const portrait = new Container()
+        portrait.position.set(x, y)
+        const index = ENEMY_PORTRAIT_INDEX[enemy]
+        const column = index % 4
+        const row = Math.floor(index / 4)
+        const cellWidth = this.opponentAtlas.width / 4
+        const cellHeight = this.opponentAtlas.height / 2
+        const scale = Math.max(w / cellWidth, h / cellHeight)
+        const sprite = new Sprite(this.opponentAtlas)
+        sprite.scale.set(scale)
+        sprite.position.set(
+            -column * cellWidth * scale + (w - cellWidth * scale) / 2,
+            -row * cellHeight * scale + (h - cellHeight * scale) / 2,
+        )
+        const mask = new Graphics().roundRect(0, 0, w, h, 8).fill(0xffffff)
+        sprite.mask = mask
+        portrait.addChild(sprite, mask)
+        portrait.addChild(new Graphics().roundRect(0, 0, w, h, 8).stroke({ color: COPPER, width: 2, alpha: 0.62 }))
+        return portrait
     }
 
     private renderHand(b: BattleState): void {
@@ -900,6 +934,8 @@ export class SampleGame implements GameRuntime {
         if (this.toastTimer !== null) window.clearTimeout(this.toastTimer)
         delete (globalThis as unknown as Record<string, unknown>).__forceGameOver
         delete (globalThis as unknown as Record<string, unknown>).__gameOverUiBoxes
+        if (this.opponentAtlas) void Assets.unload(this.opponentAtlasUrl)
+        this.opponentAtlas = null
         if (!this.app) return
         this.app.destroy(true, { children: true })
         this.app = null

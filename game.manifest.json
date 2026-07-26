@@ -53,7 +53,7 @@
   },
   "media": {
     "titleKeyImage": "public/art/title-key.svg",
-    "visualMedium": "PixiJS geometric paper-theatre courtroom with an original SVG key image",
+    "visualMedium": "Raster gouache-and-charcoal opponent paintings inside a PixiJS paper-theatre courtroom",
     "audio": "synthesized WebAudio only, no audio files",
     "screenshots": [],
     "makerIllustration": {
@@ -98,7 +98,8 @@
       { "source": "public/fonts/Galmuri11.woff2", "releasePath": "fonts/Galmuri11.woff2" },
       { "source": "public/fonts/Galmuri11-Bold.woff2", "releasePath": "fonts/Galmuri11-Bold.woff2" },
       { "source": "public/fonts/Galmuri14.woff2", "releasePath": "fonts/Galmuri14.woff2" },
-      { "source": "public/art/title-key.svg", "releasePath": "art/title-key.svg" }
+      { "source": "public/art/title-key.svg", "releasePath": "art/title-key.svg" },
+      { "source": "public/art/opponent-atlas.png", "releasePath": "art/opponent-atlas.png" }
     ]
   },
   "source": {

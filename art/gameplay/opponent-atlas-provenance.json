@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "assetRole": "identity-defining raster gameplay opponent portraits",
+  "tool": "Codex built-in image_gen",
+  "mode": "built-in generation",
+  "inputImages": [],
+  "promptFile": "art/gameplay/opponent-atlas-prompt.md",
+  "generatedSource": {
+    "path": "art/gameplay/opponent-atlas-source.png",
+    "width": 1774,
+    "height": 887,
+    "bytes": 3101069,
+    "sha256": "867f3095c59705d61ce7a59974d54b3af532d12b8659ea0ada700ab0f402e81f"
+  },
+  "gameDerivative": {
+    "path": "public/art/opponent-atlas.png",
+    "width": 1536,
+    "height": 768,
+    "bytes": 2191914,
+    "sha256": "34c5a39c5dc4f1c338384bae763a1d488bb2c05d3d741db2e7bb2ceb83a584f8",
+    "postprocessing": "/usr/bin/sips -Z 1536 art/gameplay/opponent-atlas-source.png --out public/art/opponent-atlas.png"
+  },
+  "gridOrder": [
+    "jury",
+    "clerk",
+    "witness",
+    "prosecutor",
+    "bailiff",
+    "archivist",
+    "choir",
+    "judge"
+  ],
+  "gameplayLocations": [
+    "branching docket encounter choices",
+    "active opponent panel in every hearing"
+  ],
+  "inspection": {
+    "exactFourByTwoGrid": true,
+    "eightDistinctSubjects": true,
+    "noTextOrLogo": true,
+    "subjectsStayInsideCells": true,
+    "smallScreenContrast": true
+  }
+}

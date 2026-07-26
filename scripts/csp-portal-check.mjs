@@ -83,7 +83,7 @@ stage.style.height = '844px'
 globalThis.__events = []
 globalThis.__game = (mod.mountGame ?? mod.default)({
   root: stage,
-  assetBaseUrl: '/',
+  assetBaseUrl: '/__game-assets/',
   locale: 'ko',
   seed: '1',
   host: { emit: (e) => globalThis.__events.push(e) },

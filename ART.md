@@ -5,13 +5,29 @@
 
 ## 게임 아트
 
-- 시각 매체: 2D 종이극장식 법정 UI, 벡터 키 이미지, 절차적 재 입자.
-- 원본: 외부 이미지·모델·게임 아트를 사용하지 않는다. 저장소에 포함된 Galmuri
-  글꼴은 `OFL-GALMURI.md`의 SIL Open Font License 1.1을 따른다.
-- 생성·제작 방식: 제작자가 TypeScript/PixiJS의 원·사각형·다각형과 SVG 기본
-  도형을 직접 조합해 법정 아치, 인장, 카드, 초상 실루엣과 키 이미지를 만들었다.
-- 후가공: 런타임 알파 합성, 색조 단계, 느린 입자 이동, 피격 흔들림과 인장 맥박.
-- 사용 위치: 타이틀 화면, 사건표, 카드 전투, 보상·휴정·판결 화면.
+- 주 시각 매체: 거친 종이 섬유, 불투명 안료층, 목탄 윤곽으로 그린 래스터
+  과슈·목탄 상대 초상 8점. 사건표의 모든 선택 카드와 매 심리의 활성 상대 패널에
+  표시되며, PixiJS 도형·문자와 SVG 키 이미지는 HUD·프레임·셸을 보조한다.
+- 원본: OpenAI Codex 내장 `image_gen`의 `stylized-concept` 모드로 입력 이미지나
+  외부 참고 이미지 없이 4×2 초상 아틀라스를 생성했다. 최종 프롬프트는
+  `art/gameplay/opponent-atlas-prompt.md`, 구조화된 이력은
+  `art/gameplay/opponent-atlas-provenance.json`에 보존한다.
+- 생성 원본: `art/gameplay/opponent-atlas-source.png`, 1774×887 RGB PNG,
+  3,101,069 bytes, SHA-256
+  `867f3095c59705d61ce7a59974d54b3af532d12b8659ea0ada700ab0f402e81f`.
+- 후가공: `/usr/bin/sips -Z 1536`으로 비율을 유지해 축소하고 PNG로 패키징했다.
+  `public/art/opponent-atlas.png`, 1536×768 RGB PNG, 2,191,914 bytes,
+  SHA-256
+  `34c5a39c5dc4f1c338384bae763a1d488bb2c05d3d741db2e7bb2ceb83a584f8`.
+  런타임에서는 4×2 셀을 PixiJS 마스크로 잘라 사용하며 색상 재해석은 하지 않는다.
+- 사용 위치: `src/game/SampleGame.ts`의 `opponentPortrait()`가 사건표 선택 카드와
+  활성 심리 상대 패널에 아틀라스 셀을 배치한다. 적 ID별 셀 대응은
+  `ENEMY_PORTRAIT_INDEX`에 고정했다.
+- 기타 원본: 저장소에 포함된 Galmuri 글꼴은 `OFL-GALMURI.md`의 SIL Open Font
+  License 1.1을 따른다. 외부 이미지·모델·게임 아트는 사용하지 않는다.
+- 기타 제작·후가공: 제작자가 TypeScript/PixiJS 도형과 SVG 기본 도형으로 법정
+  아치, 인장, 카드와 키 이미지를 만들었고, 런타임 알파 합성, 색조 단계, 느린
+  입자 이동, 피격 흔들림과 인장 맥박을 적용했다.
 
 ## 게임 사운드
 

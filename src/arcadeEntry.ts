@@ -42,7 +42,7 @@ export function mountGame(options: Options) {
     host.className = 'game-host'
     shell.appendChild(host)
     options.root.appendChild(shell)
-    const game = new SampleGame()
+    const game = new SampleGame(options.assetBaseUrl)
     void game.mount(host, {
         onGameOver: (result) => emit('ended', { runId: String(run), result }),
     }).then(() => {
