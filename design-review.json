@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 3,
+  "reviewedAt": "2026-07-26",
+  "sourceHash": "ad7849964a78e29159871353d408d27e63633f3f65486b8f96e7b4fdd0044f2c",
+  "verdict": "pass",
+  "method": {
+    "build": "Production web build from `npm run build`, served with `npm run preview -- --host 127.0.0.1 --port 4173`; immutable Arcade build from `npm run build:arcade`",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "designConformance": [
+    {
+      "id": "deck-loop",
+      "designClaim": "Each hearing teaches and repeats a draw-five, spend-three-Focus, target-and-play, end-argument, visible-enemy-intent loop with discard reshuffling.",
+      "status": "implemented",
+      "observed": "In the 390×844 production build the first hearing opened with five cards, Focus 3/3 and Attack 5. Pointer input selected a card and its glowing enemy or counsel target, reduced Focus, then END ARGUMENT resolved the enemy action and dealt a fresh five-card hand at Focus 3/3. The creator suite independently passed the initial-hand, Focus-spend, enemy-resolution and hand-cycle rules."
+    },
+    {
+      "id": "deckbuilding-growth",
+      "designClaim": "Inquiry supplies damage and cycling, Evidence supplies marks and scaling, Objection supplies defense and intent reduction, Appeal supplies recovery, and rewards plus recess healing or upgrades change the run's deck and numbers.",
+      "status": "implemented",
+      "observed": "The production build displayed family labels, costs and numerical effects, applied Objection as Block 3 plus live intent 5 → 2, offered three distinct post-hearing cards, and changed the case file from 10 to 11 cards after a draft. A live run reached both recesses after hearings 3 and 6 and displayed Restore 12 Trust versus upgrade-first-card choices. Creator tests passed family/target assignment, distinct rewards, deck growth, upgrade preservation, Evidence/Appeal effects and a recovery/Evidence victory build."
+    },
+    {
+      "id": "opponent-adaptation",
+      "designClaim": "The Jury adds Doubt, the Witness punishes repeated families, the Clerk seals Evidence cost and alternates attacks with ward, the Prosecutor halves healing, the Bailiff pierces block, the Archivist regenerates ward, and the Choir alternates weak and strong attacks.",
+      "status": "implemented",
+      "observed": "The actual build exposed opponent rules before selection. The reviewer observed the Jury's Add Doubt +1 intent and insertion feedback, the Clerk's opening Ward 8, Evidence cost 2 and next Ward +6 forecast/resolution, the Witness repeat-family penalty feedback, and live Archivist hearings. Source inspection confirmed the remaining Prosecutor, Bailiff, Archivist and Choir intent/effect branches and matching bilingual rule copy; creator tests independently passed Clerk sealing, Prosecutor recovery halving and Witness repeat punishment."
+    },
+    {
+      "id": "preaction-information",
+      "designClaim": "Before action, the game shows next intent and expected damage, Trust, Block, enemy argument and ward, card costs, selected target, statuses, and distinct numerical/color/motion/audio feedback for damage, block, healing and sealing.",
+      "status": "implemented",
+      "observed": "The live battle showed enemy 24/24, intent Attack 5, Trust 48/48, Block, Evidence, Focus 3/3, draw/discard counts, family-colored costs and highlighted target. Objection immediately changed the forecast to Attack 5 → 2 with damage -3 feedback. At Focus 0 remaining cards dimmed and showed NEED FOCUS. Clerk Ward +6 was distinct from current Ward 8/14. The production interaction produced no browser errors, and the runtime uses separate synthesized cues and hit/block/heal feedback paths."
+    },
+    {
+      "id": "run-structure",
+      "designClaim": "The run presents three acts of paired normal/special hearing choices, a reward after each win, recesses after hearings 3 and 6, eight hearings total, then a 60-argument High Judge whose admitted family rotates Evidence → Inquiry → Objection/Appeal and whose attack rises below half argument.",
+      "status": "implemented",
+      "observed": "The actual production run showed paired docket choices and progress markers, drafted after each win, reached both recess screens at 3/8 and 6/8, and entered hearing 7 before ending. Source inspection confirmed the eight encounter pairs, transition to the final-hearing screen, Judge argument 60, rotating admissibility, off-family -2 and below-half attack increase. The creator full-run test independently traversed eight hearings plus the Judge and passed the admissibility/off-family assertions."
+    },
+    {
+      "id": "run-endings",
+      "designClaim": "Trust 0 loses the case; reducing the High Judge's argument to 0 wins the verdict; the result closes the run with score, completed hearings, remaining Trust and primary deck family, and a new run can start.",
+      "status": "implemented",
+      "observed": "A live production run reached Trust 0 and rendered CASE LOST with score 100, completed-hearing summary, Trust 0/48, Inquiry as primary argument and NEW CASE; the shell recorded the score and NEW CASE returned to a fresh 10-card, Trust 48/48 hearing-1 docket. The creator full-run test independently reduced the final Judge to 0 after all eight hearings. Source inspection confirmed final-win phase 9, the 100/400/Trust/upgrade score formula and the same result summary for victory."
+    },
+    {
+      "id": "card-system",
+      "designClaim": "The starting deck is four Press, four Brace, one File Record and one Objection; hearings use five-card hands, three Focus and 48 Trust, Evidence persists within a hearing, and Doubt costs one Focus to burn otherwise returning through the discard shuffle.",
+      "status": "implemented",
+      "observed": "The actual docket reported 10 cards and the first hands matched the starting-card set across redraws. Evidence persisted from one turn to the next, and the Jury's third-turn Doubt intent added a card to the case-file cycle. Source inspection matched the exact 10-card constructor and one-Focus no-effect burn behavior; creator tests passed hand, Focus, Trust and cycle rules."
+    },
+    {
+      "id": "cards-and-upgrades",
+      "designClaim": "All twelve production cards and their upgraded forms use the GDD costs and numerical damage, block, draw, Evidence, Focus, intent reduction and healing effects.",
+      "status": "implemented",
+      "observed": "The production battle and reward screens displayed the specified costs and base effects for starting cards and sampled rewards including Cross-Exam, Precedent, Ash Truth, Call Recess, Closing Plea, Rebuttal and Opening. Source inspection matched every GDD base and upgraded value for all twelve cards. Creator tests passed playable family/target coverage and upgrade preservation."
+    },
+    {
+      "id": "score-and-records",
+      "designClaim": "A hearing win scores 100, final victory 400, remaining Trust 10 each and upgraded cards 25 each; GameResult phase is completed hearings and the existing local/platform result path receives it.",
+      "status": "implemented",
+      "observed": "The actual loss after one cleared hearing and zero remaining Trust showed score 100 and produced a rank-1 local verdict record, then exposed the retry path. Source inspection matched the score increments and phase callback. Creator record tests passed insertion, ordering, rank, trimming and persistent play count."
+    },
+    {
+      "id": "bilingual-mobile-runtime",
+      "designClaim": "Korean and English provide equivalent rule/card/state/result information in a uniformly letterboxed 390×844 portrait game with pointer and keyboard play, pause/resume, mute, locale switching and restart support.",
+      "status": "implemented",
+      "observed": "The reviewer opened and played both Korean and English production views at 390×844, used pointer card/target controls and keyboard card/target progression, opened the pause/sound overlay, resumed with Escape, and restarted after a result. Locale parity tests passed. The independent viewport run passed standalone and portal geometry at 360×800, 390×844, 430×932 and 900×760 plus Korean/English game-over layouts with no errors."
+    }
+  ],
+  "creatorTests": [
+    {
+      "command": "npm test -- --reporter=verbose",
+      "covers": "Battle loop, Focus/hand cycling, Clerk/Prosecutor/Witness rules, Objection and ward previews, Judge admissibility, rewards/upgrades, all card families/targets, closed nine-hearing victory, locale parity, records and seeded RNG.",
+      "status": "pass"
+    },
+    {
+      "command": "npm run build",
+      "covers": "TypeScript and Vite production web build.",
+      "status": "pass"
+    },
+    {
+      "command": "npm run build:arcade",
+      "covers": "Arcade production build, immutable file manifest, file hashes, byte budgets and release metadata verification.",
+      "status": "pass"
+    },
+    {
+      "command": "npm run smoke",
+      "covers": "Production boot at the reviewed source hash with mounted runtime and no console or page errors.",
+      "status": "pass"
+    },
+    {
+      "command": "npm run viewport",
+      "covers": "Uniform mobile/portal layout and Korean/English result delivery across the declared viewport matrix.",
+      "status": "pass"
+    },
+    {
+      "command": "npm run csp",
+      "covers": "Arcade portal entry, stylesheet, 390×844 canvas, CSP, runtime errors and missing assets.",
+      "status": "pass"
+    }
+  ],
+  "deployable": {
+    "status": "pass",
+    "observed": "Computed sourceHash, smoke-result.json, verification/viewport-result.json and production-playtest.json.finalBuildHash all equal ad7849964a78e29159871353d408d27e63633f3f65486b8f96e7b4fdd0044f2c. Web and Arcade builds passed. release.json verified 15 immutable files, 2,395,435 bytes and 289,041 JS gzip bytes with releaseSha 5f2d485dd2bb19daa786e17bf8694df514880a01 and the actual 40-character launchpadSha 9f8b2bcd77eddd4a761205e83146b18316037974. Smoke mounted with zero console/page errors; viewport geometry and game-over checks passed; Arcade CSP passed with no violations, errors or missing assets."
+  },
+  "notes": [
+    "Reviewed the locked repository at baseline commit 5f2d485dd2bb19daa786e17bf8694df514880a01 without using parent brand, studio narrative, WHY, Arcade catalogue or past-game context.",
+    "The reviewer's live production interaction covered the complete early loop, reward and deck growth, opponent-specific forecasts, a separate progression through hearing 6 and both recesses, entry into hearing 7, an actual Trust-0 result and restart. The final Judge victory branch was additionally verified by the independently rerun creator full-run rule test and matching production flow implementation.",
+    "The existing build-only production playtest independently reached hearing 2/8, and its finalBuildHash matches the reviewed source. Its recorded Focus, intent-reduction and ward-forecast friction fixes were present in the live reviewed build.",
+    "No judgment was made about fun, difficulty, originality, explanation taste, test strategy or preferred scope."
+  ],
+  "summary": {
+    "ko": "최종 GDD의 구체적 플레이·결과 약속과 여섯 덱빌딩 완성 약속이 잠긴 프로덕션 빌드에 구현되어 있다. 제작자 테스트 27개, 웹·아케이드 빌드, 릴리스 검증, 스모크, 뷰포트와 CSP가 모두 통과했고 sourceHash와 40자 런치패드 SHA가 일치한다.",
+    "en": "The locked production build implements the final GDD's concrete play/result claims and all six deckbuilding completeness promises. All 27 creator tests, web and Arcade builds, release verification, smoke, viewport and CSP checks pass, with consistent sourceHash evidence and the verified 40-character launchpad SHA."
+  }
+}
