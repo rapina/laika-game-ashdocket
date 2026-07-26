@@ -291,3 +291,12 @@
 - `murr-base-v1`을 직접 참조한 평가 그림 원본과 640/1280 JPEG를 만들고,
   생성 프롬프트·해시·시각 검수 결과를 `brand/art/murr-ashdocket.json`에
   기록했다. 잠긴 게임 아트와 규칙은 변경하지 않았다.
+- Earth 원문과 그림, ADR 0012 공개 공정 기록, 여섯 단계 제작 기록을 아케이드
+  커밋 `341250a`로 배포했다. 최종 production deployment는
+  `https://laika-kypc74m2b-rapinas-projects.vercel.app`, 운영 별칭은
+  `https://laika365.vercel.app`이다.
+- 운영 별칭의 게임, 제작 기록, 공정 기록, Murr 640/1280, Laika 제작자 그림,
+  게임플레이 래스터 아틀라스와 제작 기록 캡처가 모두 HTTP 200이었다.
+  제작 기록을 390×844로 끝까지 스크롤한 검사에서도 네 이미지가 모두
+  로드됐고 console/page/request error는 0건이었다. 최종 게임 스모크도
+  mounted true, console/page/request error 0으로 통과했다.
