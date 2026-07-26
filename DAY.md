@@ -157,3 +157,31 @@
 - 게임에 남길 코드: 카드 전투와 사건 진행은 게임 전용
 - 다음 게임에서 재검증할 항목: 430px 폭에서 설계 Canvas 확대 시 backing store
   DPR이 떨어지는지 확인할 것.
+
+## 잠금 뒤 기술 메타데이터 교정
+
+- 발견: `game.manifest.json`의 `source.launchpadCommit`이 격리 제작 중 사용한
+  `template-2026-07-26` 자리표시자여서 공개 계약에 필요한 실제 상속 커밋을
+  표현하지 못했다.
+- 교정: 관제가 제공한 전체 SHA
+  `9f8b2bcd77eddd4a761205e83146b18316037974`로 해당 필드만 교체했다.
+- 게임 규칙, 런타임, GDD, 아트, 사운드, 제목, 세계와 팔레트는 변경하지 않았다.
+- sourceHash 영향: manifest는 게임 sourceHash 산정 범위 밖이므로 최종 해시는
+  `ad7849964a78e29159871353d408d27e63633f3f65486b8f96e7b4fdd0044f2c`로
+  유지됐다. 따라서 `smoke-result.json`, `verification/viewport-result.json`,
+  `production-playtest.json.finalBuildHash`도 같은 해시를 유지한다.
+- 재검증:
+  - `npm test -- --reporter=verbose`: 4 files, 27 tests 통과.
+  - `npm run build`: TypeScript/Vite 프로덕션 웹 빌드 통과, 메인 JS gzip
+    165.84KB.
+  - `npm run build:arcade`: 15 files, 2,395,435 bytes, JS gzip 289,041 bytes;
+    release 검증 통과.
+  - 새 `dist-arcade/release.json.launchpadSha`가
+    `9f8b2bcd77eddd4a761205e83146b18316037974`와 정확히 일치함을 JSON으로 확인.
+  - `npm run smoke`: mounted true, console/page error 0, 유지된 sourceHash 일치.
+  - `npm run viewport`: 360×800 / 390×844 / 430×932 / 900×760,
+    standalone/portal과 한국어·영어 결과 화면 모두 통과.
+  - `npm run csp`: CSP 위반·오류·누락 자산 0, 통과.
+  - 최종 preview의 Galmuri 글꼴 3개와 `art/title-key.svg`: HTTP 200,
+    각각 505,116 / 167,372 / 565,420 / 2,020 bytes.
+- 잠금, 커밋, 푸시와 편집 준비는 수행하지 않았다.

@@ -88,7 +88,7 @@
       ]
     },
     "source": {
-      "launchpadCommit": "template-2026-07-26"
+      "launchpadCommit": "9f8b2bcd77eddd4a761205e83146b18316037974"
     },
     "media": {
       "titleKeyImage": "public/art/title-key.svg",
@@ -254,7 +254,7 @@
     "tsconfig.app.json": "7c343cac9322ad199f865d556e776fffe781160813aea9db3eb5f2a98322808f",
     "tsconfig.json": "770b4140bbb581e2dfd9ea9946ffc9c75a1d86ba7d2db5f77c83e37cbdf9d808",
     "tsconfig.node.json": "3ced5d22ba9e246c839a695526296a8d067fbe9db838d728516d2eac9215b333",
-    "verification/csp-portal-play.png": "8d685ce2ce87862510d98a25c6fffa6508654bd00b7c47d2a8ffc1d2c70a964c",
+    "verification/csp-portal-play.png": "b302f39a0474d6892de1894ffe140c8b92b622153ecc315fff4c365476de05d0",
     "verification/csp-portal-result.json": "9eaaf4dd575f6547c6557098a420c6cbe0704598b9fdacd55d06f9c8d1d45f6c",
     "verification/gameover-360x800-portal-en.png": "86d930362e940d4bde4ef2eb2095eb93a2ecdba591f8c477c2fe8930a714962b",
     "verification/gameover-360x800-portal-ko.png": "4b985608cff99241e88e6048acd88026075e4f03d0195af00f8363319594b153",
@@ -277,13 +277,22 @@
     "sha256": "b5da1dd9109aef68712796a17ece8ae60c41949c1909304fd1c8546707c566fe"
   },
   "dayPrefix": {
-    "bytes": 10061,
-    "sha256": "8a27518931d53b50d9f93476b96815afabeaae290f0c93a4b0ae1e1c4b781c13"
+    "bytes": 11787,
+    "sha256": "137f64bcbe7c8027ed9b944777517fcbf04ef69833b26f8f5a7a925ea349da5f"
   },
   "publicIdentity": {
     "studio": "Sputnik Workshop",
     "maker": "Laika",
     "laikaBaseId": "laika-base-v1",
     "laikaBaseSha256": "820e6d43e915c4e9e32ddcd3cc14d0f2537d99f6d8d397bbd40fc416137a6712"
-  }
+  },
+  "relocks": [
+    {
+      "at": "2026-07-26",
+      "reason": "실제 launchpad SHA로 릴리스 메타데이터 교정",
+      "changed": [
+        "verification/csp-portal-play.png"
+      ]
+    }
+  ]
 }
