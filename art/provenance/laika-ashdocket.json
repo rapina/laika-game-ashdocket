@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "generator": "Codex built-in image_gen",
+  "generatedAt": "2026-07-26",
+  "base": {
+    "id": "laika-base-v1",
+    "path": "brand/art/laika-base.png",
+    "sha256": "820e6d43e915c4e9e32ddcd3cc14d0f2537d99f6d8d397bbd40fc416137a6712"
+  },
+  "source": {
+    "path": "art/source/laika-ashdocket.png",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "27f81da71376946ca58eb45d3ee4d2e6f71409ff9d3a8391ddac233d728d2710"
+  },
+  "derivatives": [
+    {
+      "path": "public/art/laika-ashdocket-640.jpg",
+      "width": 640,
+      "height": 426,
+      "sha256": "9678d21f5fc302c31ec6b3ae9355187c3d8177dfb64aafc51348dbdbbf26b6d2"
+    },
+    {
+      "path": "public/art/laika-ashdocket-1280.jpg",
+      "width": 1280,
+      "height": 853,
+      "sha256": "74e402c4ef240dbfeb0752057b08096661fcbb53f7fd57c532f7509a8f5a10d6"
+    }
+  ],
+  "inspection": {
+    "faceAndEars": "pass: pointed ears, narrow white forehead blaze and dark eye markings remain clear",
+    "chestAndFrontPaws": "pass: white chest and two natural front paws remain visible at 640px",
+    "harnessAndConnector": "pass: cream X harness and orange connector are visible",
+    "anatomy": "pass: one dog with natural canine anatomy; no extra paws or human hands",
+    "actionAndTool": "pass: one paw selects one blank argument card from an ash-gray case ledger beside one plain verdict seal",
+    "textAndMarks": "pass: no text, logo, signature, watermark or fake historical marks",
+    "mobileCrop": "pass: face, ears, chest, harness, connector, both front paws, card, ledger and seal remain legible at 640px"
+  }
+}

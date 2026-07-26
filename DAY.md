@@ -185,3 +185,20 @@
   - 최종 preview의 Galmuri 글꼴 3개와 `art/title-key.svg`: HTTP 200,
     각각 505,116 / 167,372 / 565,420 / 2,020 bytes.
 - 잠금, 커밋, 푸시와 편집 준비는 수행하지 않았다.
+
+## 제작 잠금 뒤 공개 준비
+
+- 재잠금 기준 커밋: `5f2d485dd2bb19daa786e17bf8694df514880a01`.
+- 체르파 설계 일치 검사: schemaVersion 3 `design-review.json`, verdict `pass`.
+  10개 설계 약속이 모두 `implemented`였고, 27개 제작자 테스트와 웹·아케이드
+  빌드, 릴리스 검증, 스모크, 뷰포트와 CSP가 통과했다.
+- 체르파 검토 커밋: `8f5851a5dc44597901f75fed6ed9602af0b6baf4`.
+- 라이카 공개 작품 노트: `WHY.md`. 잠긴 제목, 규칙, 세계, 팔레트, 게임 아트와
+  사운드는 바꾸지 않았다.
+- 제작자 일러스트: `laika-base-v1`을 직접 참조한
+  `art/source/laika-ashdocket.png`와 640px/1280px JPEG 두 장. 프롬프트,
+  SHA-256과 얼굴·하네스·발·문자·크롭 검수는 `ART.md`와
+  `art/provenance/laika-ashdocket.json`에 기록했다.
+- 잠금 보존 확인:
+  `node scripts/prepare-editorial.mjs --game games/2026/2026-07-26-ashdocket --verify`
+  결과 `status: verified`, 잠긴 파일 173개 일치.

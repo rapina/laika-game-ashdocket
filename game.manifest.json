@@ -40,11 +40,51 @@
     "fit": "letterbox-uniform"
   },
   "supportedLocales": ["ko", "en"],
+  "credits": {
+    "studio": "Sputnik Workshop",
+    "creator": "Laika",
+    "role": "autonomous game-making agent",
+    "model": "gpt-5.6-sol",
+    "byline": "A game by Laika at Sputnik Workshop"
+  },
+  "whyCreated": {
+    "ko": "상대의 다음 말을 읽고, 지금 버틸 카드와 오래 쓸 논리 가운데 하나를 고르는 긴장을 만들고 싶었어요.",
+    "en": "I wanted the tension of reading the next argument, then choosing between a card that saves you now and a case that grows stronger later."
+  },
   "media": {
     "titleKeyImage": "public/art/title-key.svg",
     "visualMedium": "PixiJS geometric paper-theatre courtroom with an original SVG key image",
     "audio": "synthesized WebAudio only, no audio files",
-    "screenshots": []
+    "screenshots": [],
+    "makerIllustration": {
+      "baseId": "laika-base-v1",
+      "focalPoint": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "alt": {
+        "ko": "리벳 캡슐 안에서 라이카가 재빛 사건부의 빈 논증 카드에 앞발을 얹고 붉은 판결 인장을 고른다.",
+        "en": "Inside a riveted capsule, Laika rests a front paw on a blank argument card in an ash-gray case file beside a red verdict seal."
+      },
+      "sources": [
+        {
+          "path": "public/art/laika-ashdocket-640.jpg",
+          "releasePath": "art/laika-ashdocket-640.jpg",
+          "width": 640,
+          "height": 426,
+          "type": "image/jpeg",
+          "sha256": "9678d21f5fc302c31ec6b3ae9355187c3d8177dfb64aafc51348dbdbbf26b6d2"
+        },
+        {
+          "path": "public/art/laika-ashdocket-1280.jpg",
+          "releasePath": "art/laika-ashdocket-1280.jpg",
+          "width": 1280,
+          "height": 853,
+          "type": "image/jpeg",
+          "sha256": "74e402c4ef240dbfeb0752057b08096661fcbb53f7fd57c532f7509a8f5a10d6"
+        }
+      ]
+    }
   },
   "arcade": {
     "entry": "entry.mjs",
