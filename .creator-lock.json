@@ -84,6 +84,10 @@
         {
           "source": "public/art/title-key.svg",
           "releasePath": "art/title-key.svg"
+        },
+        {
+          "source": "public/art/opponent-atlas.png",
+          "releasePath": "art/opponent-atlas.png"
         }
       ]
     },
@@ -92,7 +96,7 @@
     },
     "media": {
       "titleKeyImage": "public/art/title-key.svg",
-      "visualMedium": "PixiJS geometric paper-theatre courtroom with an original SVG key image",
+      "visualMedium": "Raster gouache-and-charcoal opponent paintings inside a PixiJS paper-theatre courtroom",
       "audio": "synthesized WebAudio only, no audio files",
       "screenshots": []
     }
@@ -105,7 +109,7 @@
     "AGENTS.md": "a94c4a6aba1f94b34eee2da3899f1efbcdbb5ad33e9755ee87673c23dc172021",
     "CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
     "CONTENT-LICENSE.md": "2a24d29605106f673a545751c7b95c28c53fbc4d2a30a4d58fbc71a320e94f78",
-    "GDD.md": "0776c2bdd2d2da6ac9bfe9fe64a949cab6f4600781b28a8f4a24c5413fe9bc25",
+    "GDD.md": "8402f59f69829981bdd19d2efa594cce46cbf3b2f384c518a169b9843ba996ed",
     "LICENSE": "273f418644dcdd980de78b7c8d7a4b1ddafe582f9433d8eb9abfc8c97bb6b824",
     "NEW_GAME.md": "f833c3f6bf45d3cd462fa8faa2bd574df8f69532b50f1279dbdacd76f2619577",
     "OFL-GALMURI.md": "9a9e5a342c430c3fcf01a408b680f4405d5bf4ac659c931be35f8a1b27ea69c9",
@@ -163,14 +167,18 @@
     "android/gradlew.bat": "94102713eb8fb22d032397924c0f38ab2da783ba60d07054339f1190a0c4e2cd",
     "android/settings.gradle": "6ce098d15ebd69b44c4ecd786bca1bdc366340d2459b2af4d7bb0ab317aa9669",
     "android/variables.gradle": "83d502c9ed8fcf1dd4791482067abeedbebae49fafe9cd14a8a1f5891deb0d88",
+    "art/gameplay/opponent-atlas-prompt.md": "626ed2680e8c0aabac8ed0d2ef5f4d366743325a608ccc5ca674bcef39c71790",
+    "art/gameplay/opponent-atlas-provenance.json": "a77a5400dde761580af5fb349e8275871a3cefed4427abd96de8f4926bb95202",
+    "art/gameplay/opponent-atlas-source.png": "867f3095c59705d61ce7a59974d54b3af532d12b8659ea0ada700ab0f402e81f",
     "autoplay.html": "58e51f9bded0bde8630c23be5425649a2febb8972e93ea5fed209d9bbb9e2c40",
     "capacitor.config.ts": "7003e40e46475c4d67e36b073a746f13eedb23484bdebf8fce5978921595f330",
     "granite.config.ts": "b94bf1c07a7f854e0ff4f29592f4cac9cb7d791421a4c7d7d4952d2ba8c0e0d0",
     "index.html": "2feaacbee034551b365889cb610caa3413ec66b223721348400e27326a250012",
     "package-lock.json": "286bfbe968234980e68ab6d16d359508ee84a6f272ce01031c3e4ae4d6df4505",
     "package.json": "8dc7f3ac9c59e1742f7213c3306432156234417a52c89537a622ac7f4117b3cd",
-    "production-playtest.json": "c97606685896493a1026f491461a227e003784389e238e50dcc9c7d7365b194d",
+    "production-playtest.json": "bcbde84e0a666a70c440fa49b5c2515135e507f17cd999aeaf31b3ba6d71d775",
     "public/apple-touch-icon.png": "90e02ecaa95d5fed4c78d759acb26a77fedfd27e6c2431ce8b336f1023d498c9",
+    "public/art/opponent-atlas.png": "34c5a39c5dc4f1c338384bae763a1d488bb2c05d3d741db2e7bb2ceb83a584f8",
     "public/art/title-key.svg": "7c9a1a25858e0085b2b84674f6256e4e0ddd948dd3c0f4d75ebb2dc141b1ccbf",
     "public/audio/game.mp3": "c5295c16b2871671ce0065d4c1c0dc711e29793073c07379c3de83a70b879c23",
     "public/audio/title.mp3": "737039be685a7bdde29ae1b178be60ce7d65987d342a0b76eccae7b065c4caef",
@@ -184,7 +192,7 @@
     "scripts/android-gradle.js": "61d7d45ca36abd716daafb14de63c6277a96c7579baf876cd0870f563960a697",
     "scripts/build-release.mjs": "36a6683aacf7049d18726d923108a1267e5fb50b36a978ad5186aae5c76f1a69",
     "scripts/bump-version.js": "447ac39caf9b460a0a7a3ff390742ed4ee5d656d4b0cc1f811916b2ba5159adf",
-    "scripts/csp-portal-check.mjs": "efc92e8b30efe784a2606e46eb1b05750ed79a4faf702f70e8b4556b36c92dbe",
+    "scripts/csp-portal-check.mjs": "40af523bff48ad9e79be54e561158c583a80b698b9c9ca2832a0c41692ff8f24",
     "scripts/earth-review-adapters/grainsplit.mjs": "e0b1ccb12b202219578644b394f7bd72b343f437783cef694141e5f9a82c65b9",
     "scripts/earth-review-adapters/repose.mjs": "14f00adc5539c0134340372fd10b55c71e29330b906750ef1115928c1a736357",
     "scripts/earth-review-harness.mjs": "31ee576d797e0b002be653ca368e142d1c6e23b04ed3beba2cba8b7fbdfa8ede",
@@ -198,8 +206,8 @@
     "scripts/test-gate.mjs": "80a4405893447b1b6bda4859fa0b7a5503a78c57c1fe20c1a0a8516acf3f05d7",
     "scripts/verify-release.mjs": "c13e9ab1cc490c347a8ee0cec74e42983ff00d7897224295c5573a9cec3d75fe",
     "scripts/viewport-smoke.mjs": "eaf19b02f1e08916cb1b322a23156b2865a3eeb83199d95bb13d29f5ba31e390",
-    "smoke-result.json": "2a775f202174d895ca7eeae8d4c9fd968539b3d859820a648e97a3f2ae2096dd",
-    "smoke.png": "55bd7ba80446aef9aae2b50a0123ee8d884a83c456fbd0d94718563bb364a670",
+    "smoke-result.json": "9ae14105762681f5a1484a7147715d4aa4b7516450b4826a1d66abe55feeda0d",
+    "smoke.png": "e188e23f0ca4064d3496638423d1e3f2c05031e723fe8f0bdbda1a3570a2ca6f",
     "src/App.tsx": "7f2f9bfac365234ec22826ce20fe5cbfadc9436035135a5063eedc6bd4159084",
     "src/ads/ADS.md": "7c9369e75c5247ee7796bf6d3d14bcd60e2cf56fa6f6622fd153505d1c4d42a1",
     "src/ads/constants.ts": "a68eace51a19a04124391a1e9cea462598dee14d286584b98670b6a2785b9199",
@@ -209,7 +217,7 @@
     "src/ads/types.ts": "68a360751767d75da175672e1401474e1ce4d515542047925d9dcac8555ba7cd",
     "src/ads/webAd.ts": "40d878ba8ba67da080d1f4ba206ec4d517700c3efa2a0c9c246e3a34e3fddf40",
     "src/appConfig.ts": "825501b861a4ebb50f3ecb6f01a59da51b345f9519095bbebabad80338f1b4fe",
-    "src/arcadeEntry.ts": "571c0f61e1dce5f8bb9ea8e4c165cb2c006f53ee7918e19cd412e3114d8aa44d",
+    "src/arcadeEntry.ts": "d01dee44e43a28320e6813d0917b6952de197ff3978d0c319e324eda3b7cd7e0",
     "src/audio/BGMManager.ts": "197dcf8a0544fc393b9e883c2ff4b81011522954cf19bae9e9a856bcd354864b",
     "src/audio/SFXManager.ts": "d1d8b84694858687adfa9a6e3b543b83b44fe32c1fd08c5ae78f8bd19a288beb",
     "src/audio/SFXSynth.ts": "dc3a4e77ff81c719d0dc6faf6264cba80c3303a640d94aa8595cc60249b7f68c",
@@ -220,9 +228,10 @@
     "src/components/GameScreen.tsx": "228cc384e6be54f9830f875313dcf53107de634376f654880428d78325a75058",
     "src/components/MobileFrame.tsx": "2eeb7ee6b1ab3e1f566d735992c97c7b3015e740ef5333c517816f53cafd0834",
     "src/components/Modal.tsx": "93378499480f371d6f52832406c06120c5a2f44e4ac031b0e8acda8584b2bd77",
-    "src/game/SampleGame.ts": "4847a9ca2b9ffe08c59d6dfdbaa24ec2e3519a50fe49abb26182f9389431542d",
+    "src/game/SampleGame.ts": "bad02857556ae8981d7e6e661c8c35be9b3178bda4e2999b9f91ca5abe86b198",
     "src/game/ashDocketLogic.test.ts": "f79bd834a04329f3524bcb88ef41063a11700da9f8b46d8556b84e768d5de0d9",
     "src/game/ashDocketLogic.ts": "2a5ea7db200d8163fed0f32ef068c1a4be0e540861008043a6667a12cd3c7ae6",
+    "src/game/gameplayArt.test.ts": "6726b49add078d611026063cfdac9ac6285aa8de3ff96b240b64a822537de3d9",
     "src/game/logicRng.test.ts": "6f9a1ed18b1927a6f253192da4848fdb71c72f91f66fdfb93fd9527086133129",
     "src/game/logicRng.ts": "b7d809b52063dfb8573b8b1ea5ea70032d9d68babc893e1b2f76bc702eeeec5b",
     "src/game/records.test.ts": "8d888871279e48979af4e97a6278175a7b66d313f24f5484c34b6a60263aa02f",
@@ -254,31 +263,33 @@
     "tsconfig.app.json": "7c343cac9322ad199f865d556e776fffe781160813aea9db3eb5f2a98322808f",
     "tsconfig.json": "770b4140bbb581e2dfd9ea9946ffc9c75a1d86ba7d2db5f77c83e37cbdf9d808",
     "tsconfig.node.json": "3ced5d22ba9e246c839a695526296a8d067fbe9db838d728516d2eac9215b333",
-    "verification/csp-portal-play.png": "b302f39a0474d6892de1894ffe140c8b92b622153ecc315fff4c365476de05d0",
+    "verification/csp-portal-play.png": "2653913be481b27b84ec342adba8e57aa78083a49827ff4b18b7392d4a55bcc9",
     "verification/csp-portal-result.json": "9eaaf4dd575f6547c6557098a420c6cbe0704598b9fdacd55d06f9c8d1d45f6c",
-    "verification/gameover-360x800-portal-en.png": "86d930362e940d4bde4ef2eb2095eb93a2ecdba591f8c477c2fe8930a714962b",
-    "verification/gameover-360x800-portal-ko.png": "4b985608cff99241e88e6048acd88026075e4f03d0195af00f8363319594b153",
-    "verification/gameover-360x800-standalone-en.png": "b46de3ca59f9df79f8878246e917bbf448206b5a8d0f088d854a3931a189af2b",
-    "verification/gameover-360x800-standalone-ko.png": "d40d0527220797f2b3801050d01a98ea780f440a60ea2628f71e0643641ce097",
-    "verification/viewport-360x800-portal.png": "36e10409b4fbf004b440749c632938d8c38a2747d68c7d7f763c55fef6e9d75c",
-    "verification/viewport-360x800-standalone.png": "39e652f9d71bf936cb49de0be58e0ef0f6eeae871839bde2cbceb35137b3686d",
-    "verification/viewport-390x844-portal.png": "536af229f57dd6842459fb32a450d5b410408a19d79872262c4f271000264683",
-    "verification/viewport-390x844-standalone.png": "7f39a4e64ae9a54a25476d57f6b6f206cbeaeb30435e32979729177a31cd6c5c",
-    "verification/viewport-430x932-portal.png": "890925034752145bbd8659f1bbf81840fed3f6bb60f3d70a42c6a43ff37826e4",
-    "verification/viewport-430x932-standalone.png": "355ac4175136f53ee65a800bdce59f7ed4ca70410b66669ec4526dae6ffe0330",
-    "verification/viewport-900x760-wide-portal.png": "ca2f0f8a69c62ff59061ef104633dd14e21b8b3b3848df895dba4065909b17e0",
-    "verification/viewport-900x760-wide-standalone.png": "35c69939b7ce8ac53fe2b09d15277dcef4a1d90a7b399bc022f5f30c06e286ac",
-    "verification/viewport-result.json": "83189ff02836ae9eddb9bcefb4562a255bafdbb30265df01a5561a3a84d04274",
+    "verification/gameover-360x800-portal-en.png": "add548a9c4e3ea6344f414cd67e0aa763ff9c0796deeb855c6bb5006a1e3713c",
+    "verification/gameover-360x800-portal-ko.png": "9fbda237e725bb7f305cc295f05a9a45e1a0ec3d417be3f8d8993fc45353808e",
+    "verification/gameover-360x800-standalone-en.png": "1222a33e6a2a6b63bbeb94d004fc1cba1f48c3d0a59ce6ac3a9c732b4bed18cb",
+    "verification/gameover-360x800-standalone-ko.png": "7bc881a637100e310a673e9784910351d6822422500fbcd4906a64a6c0e44a1d",
+    "verification/raster-docket-390x844.png": "02c1d90e86d9473e037b9614db9caa25325aeb1398ce9529dcca3d62b3eadc27",
+    "verification/raster-hearing-390x844.png": "8166c6c73381e453e7b3ae48b14d0c1298eada57787dea7879f1fcf5252a463d",
+    "verification/viewport-360x800-portal.png": "438a6dfe8d644c02fd9ca09beb0d98a550582df908bd3a04f3c65b4ee52de417",
+    "verification/viewport-360x800-standalone.png": "425bb16a1c3b246ca966d9b13c40d764ad7f23295b2b70b9d4909860faae0731",
+    "verification/viewport-390x844-portal.png": "3a5453666ae13b7986ce536c594998812e4d1aec0b7be13ca86554ed3c3d8e7a",
+    "verification/viewport-390x844-standalone.png": "3a337f97a60c876184f380fb33209a89da2086208034c11a398684bfb54e5750",
+    "verification/viewport-430x932-portal.png": "c734a88027ab02e435beeaa1aa159637db560c1826b8756c79911166ac76bd0e",
+    "verification/viewport-430x932-standalone.png": "41f92f71c35205bed5a08b3188eb561bb80a7efcf201a6155a0b2b2d2e458d1e",
+    "verification/viewport-900x760-wide-portal.png": "edb1471cb11ee26b94d9d88bf3f3146497ab4a97a7b840e90cb494fde2ce966b",
+    "verification/viewport-900x760-wide-standalone.png": "1f414fe9791c23e8a8e708b26e30e4a4f481e5372612be920c398f2f715cdbe1",
+    "verification/viewport-result.json": "f04f2ea6e83e294c5f6afc3b0d83e06facaa3a3e4c86096b00b9061fbd47f338",
     "vite.config.ts": "c645fb735afddfb2ca68aaec89c8fee25d32ec7ea202e045b7eb0aa57a72b1a1",
     "vitest.config.ts": "539506e625a9fc7407c7eb2a8322a0d7445e5d00ebb8d547fa600d67e307b431"
   },
   "artPrefix": {
-    "bytes": 1240,
-    "sha256": "b5da1dd9109aef68712796a17ece8ae60c41949c1909304fd1c8546707c566fe"
+    "bytes": 3677,
+    "sha256": "f76778add42ac14aa50ef3c136a4bda446eca52911c5bd000207b35cb66c356f"
   },
   "dayPrefix": {
-    "bytes": 11787,
-    "sha256": "137f64bcbe7c8027ed9b944777517fcbf04ef69833b26f8f5a7a925ea349da5f"
+    "bytes": 15416,
+    "sha256": "e0fd3f1f78e1a369c2cabf3a764c731e8011d0aabfd2be581e76fd03a3e1a473"
   },
   "publicIdentity": {
     "studio": "Sputnik Workshop",
@@ -292,6 +303,40 @@
       "reason": "실제 launchpad SHA로 릴리스 메타데이터 교정",
       "changed": [
         "verification/csp-portal-play.png"
+      ]
+    },
+    {
+      "at": "2026-07-26",
+      "reason": "ADR 0012에 맞춰 래스터 게임플레이 상대 초상 아틀라스를 실제 사건표와 심리에 통합",
+      "changed": [
+        "GDD.md",
+        "art/gameplay/opponent-atlas-prompt.md",
+        "art/gameplay/opponent-atlas-provenance.json",
+        "art/gameplay/opponent-atlas-source.png",
+        "production-playtest.json",
+        "public/art/opponent-atlas.png",
+        "scripts/csp-portal-check.mjs",
+        "smoke-result.json",
+        "smoke.png",
+        "src/arcadeEntry.ts",
+        "src/game/SampleGame.ts",
+        "src/game/gameplayArt.test.ts",
+        "verification/csp-portal-play.png",
+        "verification/gameover-360x800-portal-en.png",
+        "verification/gameover-360x800-portal-ko.png",
+        "verification/gameover-360x800-standalone-en.png",
+        "verification/gameover-360x800-standalone-ko.png",
+        "verification/raster-docket-390x844.png",
+        "verification/raster-hearing-390x844.png",
+        "verification/viewport-360x800-portal.png",
+        "verification/viewport-360x800-standalone.png",
+        "verification/viewport-390x844-portal.png",
+        "verification/viewport-390x844-standalone.png",
+        "verification/viewport-430x932-portal.png",
+        "verification/viewport-430x932-standalone.png",
+        "verification/viewport-900x760-wide-portal.png",
+        "verification/viewport-900x760-wide-standalone.png",
+        "verification/viewport-result.json"
       ]
     }
   ]
